@@ -10,25 +10,25 @@ import React,{
     FlatList
   } from 'react-native';
   import { Navigation } from "react-native-navigation";
-//   import { Auth } from 'aws-amplify';
+  import { Auth } from 'aws-amplify';
 
   const signupScreen = (props) => {
     const [ idInput, setIdInput ] = useState("")
     const [ pwdInput, setPwdInput ] = useState("")
 
     const signupPressed = () => {
-        // Auth.signUp({
-        //     username : idInput,
-        //     password : pwdInput,
-        //     attributes: {
-        //         email : "mailforchat@korea.com"
-        //     },
-        // })
-        // .then((data) => {
-        //     console.log(data)
-        //     Navigation.pop(props.componentId);
-        // })
-        // .catch(err => console.log(err));
+        Auth.signUp({
+            username : idInput,
+            password : pwdInput,
+            // attributes: {
+            //     email : "mailforchat@korea.com"
+            // },
+        })
+        .then((data) => {
+            console.log(data)
+            Navigation.pop(props.componentId);
+        })
+        .catch(err => console.log(err));
     }
 
     return (

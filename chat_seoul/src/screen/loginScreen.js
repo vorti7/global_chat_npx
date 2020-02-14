@@ -9,7 +9,7 @@ import React,{
     TouchableOpacity
   } from 'react-native';
   import { Navigation } from "react-native-navigation";
-//   import { Auth } from 'aws-amplify';
+  import { Auth } from 'aws-amplify';
   
   const loginScreen = (props) => {
     const [ idInput, setIdInput ] = useState("")
@@ -18,16 +18,16 @@ import React,{
     const loginPressed = () => {
         // console.log(idInput)
         // console.log(pwdInput)
-        // Auth.signIn(idInput, pwdInput)
-        // .then((user) => {
-        //     console.log(user)
-        //     Navigation.push(props.componentId, {
-        //         component: {
-        //           name: 'ChatScreen',
-        //         }
-        //     });
-        // })
-        // .catch(err => console.log(err));
+        Auth.signIn(idInput, pwdInput)
+        .then((user) => {
+            console.log(user)
+            Navigation.push(props.componentId, {
+                component: {
+                  name: 'ChatScreen',
+                }
+            });
+        })
+        .catch(err => console.log(err));
     }
 
     const signupPressed = () => {

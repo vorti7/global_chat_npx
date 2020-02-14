@@ -8,38 +8,46 @@ import React,{
     TouchableOpacity
   } from 'react-native';
   import { Navigation } from "react-native-navigation";
-  // import { Auth } from 'aws-amplify';
+  import { Auth } from 'aws-amplify';
   
   const introScreen = (props) => {
 
     const goPressed = () => {
-      // Auth.currentSession()
-      //   .then(data => {
-      //     console.log(data)
-      //     Navigation.push(props.componentId, {
-      //         component: {
-      //           name: 'ChatScreen',
-      //         }
-      //     });
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //     Navigation.push(props.componentId, {
-      //         component: {
-      //           name: 'LoginScreen',
-      //         }
-      //     });
-      //   });
+      Auth.currentSession()
+        .then(data => {
+          console.log(data)
+          Navigation.push(props.componentId, {
+              component: {
+                name: 'ChatScreen',
+              }
+          });
+        })
+        .catch(err => {
+          console.log(err)
+          Navigation.push(props.componentId, {
+              component: {
+                name: 'LoginScreen',
+              }
+          });
+        });
     }
 
     const logoutPressed = () => {
-      // Auth.signOut()
-      //   .then(success => {
-      //     console.log(success)
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //   });
+      Auth.signOut()
+        .then(success => {
+          console.log(success)
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    }
+
+    const changeAttributePressed = () => {
+      Navigation.push(props.componentId, {
+        component: {
+          name: 'ChangeAttributeScreen',
+        }
+    });
     }
 
     return (
@@ -86,6 +94,25 @@ import React,{
             style={{fontSize:50, fontWeight:'bold'}}
           >
             Logout
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={{
+                height: 40,
+                width: '80%',
+                backgroundColor: 'gray',
+                borderWidth: 1,
+                margin:'2.5%',
+                paddingTop:5,
+                alignItems:'center',
+                justifyContent:'center'
+            }}
+            onPress={() => changeAttributePressed()}
+        >
+          <Text
+            style={{fontSize:50, fontWeight:'bold'}}
+          >
+            Change
           </Text>
         </TouchableOpacity>
       </View>
