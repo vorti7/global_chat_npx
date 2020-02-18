@@ -50,6 +50,30 @@ import React,{
     });
     }
 
+    const verifyPressed = () => {
+      Navigation.push(props.componentId, {
+        component: {
+          name: 'VerifyScreen',
+        }
+    });
+    }
+
+    const confirmPressed = () => {
+      Navigation.push(props.componentId, {
+        component: {
+          name: 'ConfirmScreen',
+        }
+    });
+    }
+
+    const unconfirmedVerifyPressed = () => {
+      Navigation.push(props.componentId, {
+        component: {
+          name: 'UnconfirmedVerifyScreen',
+        }
+    });
+    }
+
     return (
       <View
         style={{
@@ -113,6 +137,63 @@ import React,{
             style={{fontSize:50, fontWeight:'bold'}}
           >
             Change
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={{
+                height: 40,
+                width: '80%',
+                backgroundColor: 'gray',
+                borderWidth: 1,
+                margin:'2.5%',
+                paddingTop:5,
+                alignItems:'center',
+                justifyContent:'center'
+            }}
+            onPress={() => verifyPressed()}
+        >
+          <Text
+            style={{fontSize:50, fontWeight:'bold'}}
+          >
+            Verify
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={{
+                height: 40,
+                width: '80%',
+                backgroundColor: 'gray',
+                borderWidth: 1,
+                margin:'2.5%',
+                paddingTop:5,
+                alignItems:'center',
+                justifyContent:'center'
+            }}
+            onPress={() => confirmPressed()}
+        >
+          <Text
+            style={{fontSize:50, fontWeight:'bold'}}
+          >
+            Confirm
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={{
+                height: 40,
+                width: '80%',
+                backgroundColor: 'gray',
+                borderWidth: 1,
+                margin:'2.5%',
+                paddingTop:5,
+                alignItems:'center',
+                justifyContent:'center'
+            }}
+            onPress={() => unconfirmedVerifyPressed()}
+        >
+          <Text
+            style={{fontSize:35, fontWeight:'bold'}}
+          >
+            Unconfirmed Verify
           </Text>
         </TouchableOpacity>
       </View>

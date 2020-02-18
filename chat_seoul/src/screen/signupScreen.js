@@ -15,14 +15,16 @@ import React,{
   const signupScreen = (props) => {
     const [ idInput, setIdInput ] = useState("")
     const [ pwdInput, setPwdInput ] = useState("")
+    const [ phoneInput, setPhoneInput ] = useState("")
 
     const signupPressed = () => {
         Auth.signUp({
             username : idInput,
             password : pwdInput,
-            // attributes: {
-            //     email : "mailforchat@korea.com"
-            // },
+            attributes: {
+                email : idInput,
+                phone_number : phoneInput
+            },
         })
         .then((data) => {
             console.log(data)
@@ -55,6 +57,12 @@ import React,{
             onChangeText={text => setPwdInput(text)}
             value={pwdInput}
             placeholder="Password"
+        />
+        <TextInput
+            style={{ height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, margin:'2.5%' }}
+            onChangeText={text => setPhoneInput(text)}
+            value={phoneInput}
+            placeholder="Phone number"
         />
         <TouchableOpacity
             style={{
