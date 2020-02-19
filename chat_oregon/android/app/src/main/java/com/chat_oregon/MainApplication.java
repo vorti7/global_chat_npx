@@ -1,4 +1,4 @@
-package com.chat_seoul;
+package com.chat_oregon;
 
 import android.app.Application;
 import android.content.Context;

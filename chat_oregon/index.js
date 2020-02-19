@@ -26,11 +26,11 @@ Navigation.registerComponent('ConfirmScreen', () => WithProvider(ConfirmScreen))
 Navigation.registerComponent('UnconfirmedVerifyScreen', () => WithProvider(UnconfirmedVerifyScreen));
 
 const awsConfig = {
-  identityPoolId: 'ap-northeast-2:e18290e0-3b80-4bac-a0c1-4717148019c1',
-  region: 'ap-northeast-2',
-  userPoolId: 'ap-northeast-2_A9ZlaxIsH',
-  userPoolWebClientId: '5r1dlq4rdglclf7go0iecn1o1l',
-  aws_appsync_graphqlEndpoint: 'https://5hbkkhvltzehzinwxb5o73fj6e.appsync-api.ap-northeast-2.amazonaws.com/graphql',
+  identityPoolId: 'us-west-2:79cf9fea-c635-4bf8-9705-5806231ae523',
+  region: 'us-west-2',
+  userPoolId: 'us-west-2_yJ8Lcci4M',
+  userPoolWebClientId: '6pli9ulrhb77p1g3ualhbsc1k3',
+  aws_appsync_graphqlEndpoint: 'https://jssvbysfqvfwjk6vqw3elgcehy.appsync-api.us-west-2.amazonaws.com/graphql',
   aws_appsync_cognitoType: 'AMAZON_COGNITO_USER_POOLS',
 }
 
