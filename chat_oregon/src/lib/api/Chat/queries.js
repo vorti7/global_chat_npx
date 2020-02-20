@@ -7,7 +7,6 @@ export const GET_CHAT = gql`
             type
             writer
             content
-            testList
         }
     }
 `;
@@ -20,7 +19,6 @@ export const GET_CHAT_LIST = gql`
                 type
                 writer
                 content
-                testList
             }
         }
     }

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {API} from '../lib/api';
 
-export default () => {
+export default (props) => {
     const flatListRef = useRef(null);
 
     const getChatList = API.Chat.getList();

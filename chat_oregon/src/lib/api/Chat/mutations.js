@@ -6,7 +6,6 @@ export const CREATE_CHAT = gql`
             type
             writer
             content
-            testList 
         }
     }
 `;

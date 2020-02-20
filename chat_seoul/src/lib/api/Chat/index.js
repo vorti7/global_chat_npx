@@ -2,6 +2,7 @@ import {useQuery, useMutation} from '@apollo/react-hooks';
 
 import * as Queries from './queries';
 import * as Mutations from './mutations';
+import * as Subscriptions from './subscriptions'
 
 export const getItem = variables => {
   const query = useQuery(Queries.GET_CHAT, {
@@ -22,6 +23,15 @@ export const createChat = () => {
     const mutation = useMutation(Mutations.CREATE_CHAT,);
     return mutation
 }
+
+// export const onGlobal = () => {
+//   const {
+//     data,
+//     loading,
+//   } = useSubscription(Subscriptions.ON_CHAT_GLOBAL);
+//   return data
+//   // return useSubscription(Subscriptions.ON_CHAT_GLOBAL);
+// }
 
 // export const updateChat = () => {
 //   const mutation = useMutation(Mutations.UPDATE_CHAT);

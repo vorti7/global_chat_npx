@@ -8,32 +8,38 @@ import {
 } from 'react-native';
 import {API} from '../lib/api';
 
-export default () => {
+export default (props) => {
     const flatListRef = useRef(null);
 
     const getChatList = API.Chat.getList();
 
-    // console.log(getChatList.data.listChats.items)
-    const [createChat, { data }] = API.Chat.createChat();
-    // const createChat = API.Chat.createChat();
+    const {
+        data,
+        loading,
+    } = API.Chat.onGlobal()
+    // console.log(data)
+    useEffect(() => {
+        // console.log(data.onGlobalChat)
+        if(data != undefined) {
+            setChatList([data.onGlobalChat, ...chatList.filter(chat => chat.id !== data.onGlobalChat.id)])
+        }
+    },[data])
+
+    const [createChat] = API.Chat.createItem();
 
     const [ chatList, setChatList ] = useState(getChatList.data.listChats.items)
+    // const [ chatList, setChatList ] = useState([])
 
     const chatInput = (chatData) => {
         // setChatList(chatList.concat([{writer: '', chat:chatData}]))
-        console.log(chatData)
         const inputData = {
             "type": 0,
             "writer": "groot",
-            "content": chatData,
-            "testList": [
-                "sdgas"
-            ]
+            "content": chatData
         }
-
-        let test = createChat({ variables: {createchatinput:inputData} })
-
-        console.log(test)
+        console.log({ variables: {createchatinput:inputData} })
+        // let test = createChat({ variables: {"createchatinput":inputData} })
+        createChat({createchatinput:inputData})
     }
 
     return(
