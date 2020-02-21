@@ -20,10 +20,8 @@ export const getList = () => {
 }
 
 export const createItem = () => {
-  // const mutation = useMutation(Mutations.CREATE_CHAT);
-  return useMutation(Mutations.CREATE_CHAT)
+  return useMutation(Mutations.CREATE_CHAT, {})
 }
-
 export const onGlobal = () => {
   const {
     data,

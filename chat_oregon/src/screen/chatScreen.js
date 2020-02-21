@@ -8,38 +8,64 @@ import {
 } from 'react-native';
 import {API} from '../lib/api';
 
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+
+
 export default (props) => {
     const flatListRef = useRef(null);
 
     const getChatList = API.Chat.getList();
 
     const {
-        data,
+        subData,
         loading,
     } = API.Chat.onGlobal()
-    // console.log(data)
-    useEffect(() => {
-        // console.log(data.onGlobalChat)
-        if(data != undefined) {
-            setChatList([data.onGlobalChat, ...chatList.filter(chat => chat.id !== data.onGlobalChat.id)])
-        }
-    },[data])
 
-    const [createChat] = API.Chat.createItem();
+    useEffect(() => {
+        if(subData != undefined) {
+            setChatList([data.onGlobalChat, ...chatList.filter(chat => chat.id !== subData.onGlobalChat.id)])
+        }
+    },[subData])
+
+    const [ createChat, { data }] = API.Chat.createItem();
+    // const createChat = API.Chat.createItem()
 
     const [ chatList, setChatList ] = useState(getChatList.data.listChats.items)
-    // const [ chatList, setChatList ] = useState([])
+
+
+
+
+    // const CREATECHAT = gql`
+    //     mutation createChat($createchatinput: CreateChatInput!) {
+    //         createChat(input: $createchatinput) {
+    //             type
+    //             writer
+    //             content
+    //         }
+    //     }
+    // `
+
+    // const [createChat] = useMutation(CREATECHAT, {
+    //     variables: {
+    //       createchatinput : {
+    //         "type": 0,
+    //         "writer": "hodor",
+    //         "content": "hodor!!!!!!!!"
+    //       }
+    //     }
+    // });
+
+
 
     const chatInput = (chatData) => {
-        // setChatList(chatList.concat([{writer: '', chat:chatData}]))
-        const inputData = {
-            "type": 0,
-            "writer": "groot",
-            "content": chatData
-        }
-        console.log({ variables: {createchatinput:inputData} })
-        // let test = createChat({ variables: {"createchatinput":inputData} })
-        createChat({createchatinput:inputData})
+        createChat({ variables: {
+            createchatinput: {
+                "type": 0,
+                "writer": "hodor",
+                "content": chatData
+            }
+        } })
     }
 
     return(
